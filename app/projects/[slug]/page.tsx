@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 
-const URL = process.env.STRAPI_BASE_URL
+const URL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL
 export const dynamicParams = true
 
 export const generateStaticParams = async () => {

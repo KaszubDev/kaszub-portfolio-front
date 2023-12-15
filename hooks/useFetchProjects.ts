@@ -1,6 +1,8 @@
-const URL = process.env.STRAPI_BASE_URL
+import { cache } from "react"
 
-export const useFetchProjects = async () => {
+const URL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL
+
+export const useFetchProjects = cache(async () => {
     const fetchParams = {
         method: 'POST',
         headers: {
@@ -39,10 +41,10 @@ export const useFetchProjects = async () => {
         })
     }
     
-    const res = await fetch(`${URL}/graphql`, fetchParams)
+    const res = await fetch(`${URL}/graphql`, { ...fetchParams, next: {revalidate: 3600} })
     const projects = await res.json()
     
     // console.log(projects.data.projects.data)
     
     return projects.data.projects.data
-}
+})

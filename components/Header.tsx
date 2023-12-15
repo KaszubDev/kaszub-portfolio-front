@@ -24,20 +24,18 @@ const Header = () => {
                       </div>
                     </Disclosure.Button>
                   </div>
-                  <div className="flex items-center justify-center sm:justify-between">
-                    <Link href="/">
-                      <span className='font-bold text-xl lg:text-3xl'>KaszubDev</span>
-                    </Link>
-                    <div className="hidden sm:ml-6 sm:block">
-                      <div className="flex space-x-4">
-                        <Link href="/" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/" ? "font-bold" : ""}`}>
-                          Projects
-                        </Link>
-                        <Link href="/about-me" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about-me" ? "font-bold" : ""}`}>
-                          About me
-                        </Link>
-                        
-                      </div>
+                  
+                  <Link href="/" title='Go to Homepage'>
+                    <span className='font-bold text-xl lg:text-3xl'>KaszubDev</span>
+                  </Link>
+                  <div className="hidden sm:ml-6 sm:block">
+                    <div className="flex space-x-4">
+                      <Link href="/" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/" ? "font-bold" : ""}`}>
+                        Projects
+                      </Link>
+                      <Link href="/about-me" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about-me" ? "font-bold" : ""}`}>
+                        About me
+                      </Link>
                     </div>
                   </div>
                 </div>
