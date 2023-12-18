@@ -1,15 +1,6 @@
 export {}
 
 declare global {
-    interface IProjectCardProps {
-        key?: number,
-        name: string,
-        slug: string,
-        shortDescription: string,
-        thumbnailUrl: string,
-        tags?: { data: Array }
-    }
-
     interface IProjectsGrid {
         id: number,
         attributes: {
@@ -29,5 +20,17 @@ declare global {
 
     interface IProjectsGridProps {
         projects: IProjectsGrid[]
+    }
+
+    type Tag = {
+        id: number,
+        attributes: {
+          Name: string
+        },
+        checked: boolean
+    }
+
+    interface ITagsProps {
+        tags: Tag[]
     }
 }

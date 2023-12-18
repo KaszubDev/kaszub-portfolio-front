@@ -8,7 +8,7 @@ const Header = () => {
     const pathname = usePathname()
 
     return (
-        <header className='container mx-auto mb-5 lg:mb-8'>
+        <header className='container mx-auto mb-3 md:mb-5 lg:mb-8'>
           <Disclosure as="nav" className="p-0 py-4 lg:py-7 border-b border-b-gray-400 sm:px-0">
             {({ open }) => (
               <>

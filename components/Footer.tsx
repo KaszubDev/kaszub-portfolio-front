@@ -10,7 +10,7 @@ const Footer = async () => {
         <div className="border-t border-t-gray-400 flex justify-center py-3">
             <div className="flex gap-x-6">
               {Github &&
-              <Link href={Github} className="hover:opacity-80" title="KaszubDev GitHub profile">
+              <Link href={Github} className="md:hover:fill-zinc-700" title="KaszubDev GitHub profile">
                 <svg className="h-5 w-5 md:h-6 md:w-6" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 97.6 96">
                 <path d="M48.9,0C21.8,0,0,22,0,49.2C0,71,14,89.4,33.4,95.9c2.4,0.5,3.3-1.1,3.3-2.4c0-1.1-0.1-5.1-0.1-9.1
                   c-13.6,2.9-16.4-5.9-16.4-5.9c-2.2-5.7-5.4-7.2-5.4-7.2c-4.4-3,0.3-3,0.3-3c4.9,0.3,7.5,5.1,7.5,5.1c4.4,7.5,11.4,5.4,14.2,4.1
@@ -22,7 +22,7 @@ const Footer = async () => {
               </Link>
               }
               {Linkedin &&
-              <Link href={Linkedin} className="hover:opacity-80" title="My LinkedIn profile">
+              <Link href={Linkedin} className="md:hover:fill-zinc-700" title="My LinkedIn profile">
                 <svg className="h-5 w-5 md:h-6 md:w-6" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 310 309.3">
                 <g id="XMLID_801_">
                   <path id="XMLID_802_" d="M72.2,99.4H9.9c-2.8,0-5,2.2-5,5v199.9c0,2.8,2.2,5,5,5h62.2c2.8,0,5-2.2,5-5V104.4

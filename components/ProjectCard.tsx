@@ -1,6 +1,15 @@
 import Image from "next/image"
 import Link from 'next/link'
 
+type IProjectCardProps = {
+  key?: number,
+  name: string,
+  slug: string,
+  shortDescription: string,
+  thumbnailUrl: string,
+  tags?: { data: [] }
+}
+
 const ProjectCard = (props:IProjectCardProps) => {
   const {name, slug, shortDescription, thumbnailUrl, tags } = props
 
