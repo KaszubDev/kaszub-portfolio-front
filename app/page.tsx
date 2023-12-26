@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     setIsLoading(true);
     (async () => {
-      let res:IProjectsGrid[] = await useFetchProjects()
+      const res:IProjectsGrid[] = await useFetchProjects()
       setProjects(res)
     })().then(() => {
       setIsLoading(false)

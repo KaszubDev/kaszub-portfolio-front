@@ -21,9 +21,9 @@ const ProjectCard = (props:IProjectCardProps) => {
           <span className="text-xl lg:text-2xl font-bold">{name}</span>
           <p className="text-sm lg:text-base">{shortDescription}</p>
           <div className="flex flex-wrap gap-x-2 mt-2">
-              {tags?.data.map((tag:any) => {
-                return <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
-              })}
+              {tags?.data.map((tag:any) => (
+                <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
+              ))}
           </div>
         </div>
       </div>
