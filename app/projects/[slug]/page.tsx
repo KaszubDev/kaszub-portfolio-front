@@ -56,6 +56,7 @@ const Project = ({params}:{params: {slug: Text}}) => {
   const [project, setProject] = useState<IProjectDetails>()
   const [isLoading, setIsLoading] = useState<Boolean>(true)
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
+  const [selectedImage, setSelectedImage] = useState<Number>(0)
 
   useEffect(() => {
     (async () => {
@@ -71,6 +72,17 @@ const Project = ({params}:{params: {slug: Text}}) => {
     notFound()
   }
 
+  useEffect(() => {
+    if(!carouselApi) return
+    carouselApi.on('select', () => {
+      setSelectedImage(carouselApi.selectedScrollSnap())
+    })
+  }, [carouselApi])
+
+  const changeSlide = (slideNumber: number) => {
+    carouselApi.scrollTo(slideNumber)
+  }
+
   if (isLoading) {
     return (
       <div className="container mx-auto pt-2">
@@ -79,30 +91,33 @@ const Project = ({params}:{params: {slug: Text}}) => {
     )
   }
 
-
   return (
     <div className="container mx-auto pt-2">
-        <h1 className="text-2xl font-bold">{project?.Name}</h1>
-        <div className="flex flex-wrap gap-x-2 mt-2">
-          {project?.Tags?.data.map((tag:Tag) => (
-            <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
-          ))}
-        </div>
+      <div className="grid lg:grid-cols-2 lg:gap-x-20">
+        <div className="lg:order-2">
+          <h1 className="text-2xl font-bold lg:text-4xl">{project?.Name}</h1>
+          <div className="flex flex-wrap gap-x-2 mt-2">
+            {project?.Tags?.data.map((tag:Tag) => (
+              <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
+            ))}
+          </div>
 
-        <p className="mt-5">{project?.Description}</p>
+          <p className="mt-5">{project?.Description}</p>
 
-        <div className="flex gap-x-5 mt-6">
-          <Button>Live Demo</Button>
-          <Button variant="outline">
-            <GithubLogo classes="h-5 w-5 mr-2"/>
-            View source
-          </Button>
+          <div className="flex gap-x-5 mt-6">
+            <Button>Live Demo</Button>
+            <Button variant="outline">
+              <GithubLogo classes="h-5 w-5 mr-2"/>
+              View source
+            </Button>
+          </div>
         </div>
 
         {project && project.Gallery.data.length > 0 && 
+        <div className="mt-7 lg:order-1 lg:mt-0">
         <Carousel
           plugins={[]}
-          className="w-full mt-7" 
+          className=""
           opts={{
             loop: true
           }}
@@ -114,8 +129,8 @@ const Project = ({params}:{params: {slug: Text}}) => {
                 <Image 
                   src={item.attributes.url}
                   alt={item.attributes.alternativeText || `screenshot from ${project.Name} project`}
-                  width={350}
-                  height={200}
+                  width={750}
+                  height={365}
                   placeholder="blur"
                   blurDataURL={item.attributes.url}
                   // onLoad={() => carouselApi.reInit()}
@@ -127,7 +142,28 @@ const Project = ({params}:{params: {slug: Text}}) => {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+
+        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5 2xl:gap-7 2xl:mt-7">
+          {project.Gallery.data.map((item: Image, index) => (
+            <button 
+              onClick={() => changeSlide(index)}
+              className={index === selectedImage ? 'border border-black' : ''}
+              >
+              <Image 
+                src={item.attributes.url}
+                alt={item.attributes.alternativeText || `screenshot from ${project.Name} project`}
+                placeholder="blur"
+                blurDataURL={item.attributes.url}
+                width={200}
+                height={150}
+                key={item.id}
+              />
+            </button>
+          ))}
+        </div>
+        </div>
         }
+      </div>
     </div>
   )
 }
