@@ -74,3 +74,10 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @font-face {
+    font-family: 'SF Mono Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF Mono Regular'), url('../public/fonts/SFMonoRegular.woff') format('woff');
+  }

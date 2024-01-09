@@ -8,7 +8,7 @@ const Footer = async () => {
   const {Linkedin, Github} = common.attributes
 
   return (
-    <footer className="container mt-5 lg:mt-8 mx-auto">
+    <footer className="container mt-3 md:mt-5 lg:mt-8 mx-auto">
         <div className="border-t border-t-gray-400 flex justify-center py-3">
             <div className="flex gap-x-6">
               {Github &&

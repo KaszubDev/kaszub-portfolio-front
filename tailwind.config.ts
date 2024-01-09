@@ -12,7 +12,8 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        raleway: ['Raleway', 'sans-serif']
+        raleway: ['Raleway', 'sans-serif'],
+        mono: ['SF Mono Regular', 'sans-serif']
       },
       height: {
         '0.7': '0.175rem',
@@ -68,10 +69,14 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "blink": {
+          '50%': { backgroundColor: 'transparent' }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "blink": "blink 1s steps(1) infinite",
       },
     },
   },

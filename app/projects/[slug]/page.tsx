@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/carousel"
 import { useEffect, useState } from "react"
 import ProjectPagePlaceholder from "@components/ProjectPagePlaceholder"
-import AutoHeight from 'embla-carousel-auto-height'
 import GithubLogo from "@components/icons/GithubLogo"
 import { type CarouselApi } from "@/components/ui/carousel"
 
@@ -92,7 +91,7 @@ const Project = ({params}:{params: {slug: Text}}) => {
   }
 
   return (
-    <div className="container mx-auto pt-2">
+    <div className="container mx-auto pt-2 mb-7">
       <div className="grid lg:grid-cols-2 lg:gap-x-20">
         <div className="lg:order-2">
           <h1 className="text-2xl font-bold lg:text-4xl">{project?.Name}</h1>
