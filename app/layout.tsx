@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-raleway">
+      <body className="font-raleway min-h-screen relative pb-20">
         <Header/>
         <main>
           {children}

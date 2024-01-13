@@ -45,7 +45,9 @@ declare global {
         Description: string,
         Slug: string,
         Short_description: string,
-        Tags: { data: Array }
+        Tags: { data: Array },
+        Demo_url: string,
+        Github_url: string,
         Gallery: { data: Image[] }
     }
 }

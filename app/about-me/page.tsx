@@ -18,8 +18,6 @@ const AboutPage = async () => {
     url: url as string
   }))
 
-  console.log(extractedDataCommon)
-
   return (
     <div className="container mx-auto">
       <div className="max-w-5xl mx-auto font-mono text-white rounded-md overflow-hidden">

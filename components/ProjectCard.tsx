@@ -15,12 +15,12 @@ const ProjectCard = (props:IProjectCardProps) => {
 
   return (
     <Link href={`/projects/${slug}`}>
-      <div className="border border-solid border-black rounded-lg overflow-hidden">
+      <div className="relative border border-solid border-black rounded-lg overflow-hidden lg:h-[350px]">
         <Image src={thumbnailUrl} width={500} height={350} alt="sample project image" />
         <div className="py-4 px-3">
-          <span className="text-xl lg:text-2xl font-bold">{name}</span>
+          <span className="block text-xl lg:text-2xl lg:mb-2 font-bold">{name}</span>
           <p className="text-sm lg:text-base">{shortDescription}</p>
-          <div className="flex flex-wrap gap-x-2 mt-2">
+          <div className="flex flex-wrap gap-x-2 mt-2 lg:absolute lg:bottom-5">
               {tags?.data.map((tag:any) => (
                 <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
               ))}

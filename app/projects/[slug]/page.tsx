@@ -14,6 +14,7 @@ import { useEffect, useState } from "react"
 import ProjectPagePlaceholder from "@components/ProjectPagePlaceholder"
 import GithubLogo from "@components/icons/GithubLogo"
 import { type CarouselApi } from "@/components/ui/carousel"
+import Link from "next/link"
 
 const URL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL
 
@@ -104,11 +105,19 @@ const Project = ({params}:{params: {slug: Text}}) => {
           <p className="mt-5">{project?.Description}</p>
 
           <div className="flex gap-x-5 mt-6">
-            <Button>Live Demo</Button>
-            <Button variant="outline">
-              <GithubLogo classes="h-5 w-5 mr-2"/>
-              View source
-            </Button>
+            {project?.Demo_url && 
+            <Link href={project.Demo_url}>
+              <Button>Live Demo</Button>
+            </Link>
+            }
+            {project?.Github_url &&
+            <Link href={project.Github_url}>
+              <Button variant="outline">
+                <GithubLogo classes="h-5 w-5 mr-2"/>
+                View source
+              </Button>
+            </Link>
+            }
           </div>
         </div>
 
@@ -132,7 +141,6 @@ const Project = ({params}:{params: {slug: Text}}) => {
                   height={365}
                   placeholder="blur"
                   blurDataURL={item.attributes.url}
-                  // onLoad={() => carouselApi.reInit()}
                   sizes="(max-width: 768px) 100vw, (min-width: 1200px) 50vw"
                 />
               </CarouselItem>
@@ -146,16 +154,16 @@ const Project = ({params}:{params: {slug: Text}}) => {
           {project.Gallery.data.map((item: Image, index) => (
             <button 
               onClick={() => changeSlide(index)}
-              className={index === selectedImage ? 'border border-black' : ''}
+              className={`transition-opacity ${index === selectedImage ? 'opacity-100' : 'opacity-40'}`}
+              key={item.id}
               >
               <Image 
                 src={item.attributes.url}
                 alt={item.attributes.alternativeText || `screenshot from ${project.Name} project`}
                 placeholder="blur"
                 blurDataURL={item.attributes.url}
-                width={200}
+                width={220}
                 height={150}
-                key={item.id}
               />
             </button>
           ))}

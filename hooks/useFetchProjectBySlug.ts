@@ -25,6 +25,8 @@ export const useFetchProjectBySlug = cache(async (slug: Text) => {
                         }
                       }
                     }
+                    Demo_url
+                    Github_url
                     Gallery {
                       data {
                         id
