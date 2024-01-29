@@ -13,7 +13,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 
-type ProjectsGridFiltersProps = {
+interface ProjectsGridFiltersProps {
   applyFilters: () => void,
   changeTags: (arr: Tag[]) => void,
   tags: Tag[]

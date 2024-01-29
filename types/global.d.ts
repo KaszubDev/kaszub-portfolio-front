@@ -1,10 +1,10 @@
 export {}
 
 declare global {
-    // zrobic uniwersalny type dla obrazkow (Thumbnail i galeria projektow)
-
     // Types
-    type Tag = {
+    
+    // Interfaces
+    interface Tag {
         id: number,
         attributes: {
           Name: string
@@ -12,7 +12,7 @@ declare global {
         checked?: boolean
     }
 
-    type Image = {
+    interface Image {
         id: number,
         attributes: {
             url: string,
@@ -20,7 +20,6 @@ declare global {
         }
     }
 
-    // Interfaces
     interface IProjectsGrid {
         id: number,
         attributes: {
@@ -30,10 +29,6 @@ declare global {
             Thumbnail: { data: Image },
             Tags: { data: Array }
         }
-    }
-
-    interface IProjectsGridProps {
-        projects: IProjectsGrid[]
     }
 
     interface ITagsProps {

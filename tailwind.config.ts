@@ -15,6 +15,9 @@ const config: Config = {
         raleway: ['Raleway', 'sans-serif'],
         mono: ['SF Mono Regular', 'sans-serif']
       },
+      screens: {
+        'xs': '420px'
+      },
       height: {
         '0.7': '0.175rem',
         '0.8': '0.2rem',

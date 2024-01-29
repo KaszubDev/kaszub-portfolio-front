@@ -22,6 +22,7 @@ export const useFetchProjects = cache(async () => {
                                 data {
                                     attributes {
                                         url
+                                        alternativeText
                                     }
                                 }
                             }

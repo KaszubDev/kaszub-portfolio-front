@@ -1,4 +1,4 @@
-type AboutDataBlockProps = {
+interface AboutDataBlockProps {
     title: string,
     content: string,
     classes?: string

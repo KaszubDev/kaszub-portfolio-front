@@ -1,26 +1,30 @@
 import Image from "next/image"
 import Link from 'next/link'
+import TextOverflowChecker from "./TextOverflowChecker"
 
-type IProjectCardProps = {
+interface IProjectCardProps {
   key?: number,
   name: string,
   slug: string,
   shortDescription: string,
   thumbnailUrl: string,
+  thumbnailAltText: string,
   tags?: { data: [] }
 }
 
 const ProjectCard = (props:IProjectCardProps) => {
-  const {name, slug, shortDescription, thumbnailUrl, tags } = props
+  const {name, slug, shortDescription, thumbnailUrl, thumbnailAltText, tags } = props
 
   return (
     <Link href={`/projects/${slug}`}>
-      <div className="relative border border-solid border-black rounded-lg overflow-hidden lg:h-[350px]">
-        <Image src={thumbnailUrl} width={500} height={350} alt="sample project image" />
-        <div className="py-4 px-3">
+      <div className="relative border border-solid border-black h-full rounded-lg overflow-hidden flex flex-col">
+        <Image src={thumbnailUrl} width={400} height={300} alt={thumbnailAltText || `${name} project thumbnail`} />
+        <div className="py-4 px-3 relative flex flex-col h-full">
           <span className="block text-xl lg:text-2xl lg:mb-2 font-bold">{name}</span>
-          <p className="text-sm lg:text-base">{shortDescription}</p>
-          <div className="flex flex-wrap gap-x-2 mt-2 lg:absolute lg:bottom-5">
+          <TextOverflowChecker>
+            {shortDescription}
+          </TextOverflowChecker>
+          <div className="flex flex-wrap gap-x-2 mt-auto">
               {tags?.data.map((tag:any) => (
                 <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
               ))}
