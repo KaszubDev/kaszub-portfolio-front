@@ -12,14 +12,17 @@ import {
 } from "@/components/ui/dialog"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
+import { useState } from "react"
 
 interface ProjectsGridFiltersProps {
-  applyFilters: () => void,
+  applyFilters: (tags:Tag[]) => void,
   changeTags: (arr: Tag[]) => void,
   tags: Tag[]
 }
 
 const ProjectsGridFilters = ({applyFilters, changeTags, tags}:ProjectsGridFiltersProps) => {
+
+  const [localTags, setLocalTags] = useState<Tag[]>([])
   
   const handleTagOnClick = (inputTag:Tag) => {
     inputTag.checked = !inputTag.checked
@@ -27,7 +30,7 @@ const ProjectsGridFilters = ({applyFilters, changeTags, tags}:ProjectsGridFilter
     // Find the index of the tag with the specified id, then update state
     const index = tempTags.findIndex(tag => tag.id === inputTag.id)
     tempTags[index] = inputTag
-    changeTags(tempTags)
+    setLocalTags(tempTags)
   }
 
   const handleAllOnClick = () => {
@@ -37,7 +40,7 @@ const ProjectsGridFilters = ({applyFilters, changeTags, tags}:ProjectsGridFilter
     } else {
       tempTags.forEach(tag => tag.checked = true)
     }
-    changeTags(tempTags)
+    setLocalTags(tempTags)
   }
 
 
@@ -81,7 +84,7 @@ const ProjectsGridFilters = ({applyFilters, changeTags, tags}:ProjectsGridFilter
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button type="submit" onClick={() => applyFilters()}>Apply</Button>
+              <Button type="submit" onClick={() => applyFilters(localTags)}>Apply</Button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>

@@ -11,6 +11,7 @@ const Home = () => {
   const [filteredProjects, setFilteredProjects] = useState<IProjectsGrid[]>([])
   const [isLoading, setIsLoading] = useState<Boolean>(false)
   const [tags, setTags] = useState<Tag[]>([])
+  const [isAnyTagSelected, setIsAnyTagSelected] = useState<Boolean>(true)
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,7 +25,7 @@ const Home = () => {
     })
   }, [])
 
-  const handleApplyFilters = () => {
+  const handleApplyFilters = (tags:Tag[]) => {
     const filters = tags.filter(tag => tag.checked).map(tag => tag.attributes.Name)
     if (filters.length > 0) {
         const filteredProjects = projects.filter((project) =>
@@ -44,12 +45,20 @@ const Home = () => {
     })().catch((err) => console.log("Error during fetching tags: " + err))
   }, [])
 
+  useEffect(() => {
+    setIsAnyTagSelected(tags.some((tag: Tag) => tag.checked))
+  }, [tags, filteredProjects])
+
   
   return (
     <section className="container mx-auto relative">
       <ProjectsGridFilters tags={tags} changeTags={setTags} applyFilters={handleApplyFilters}/>
       {isLoading && <ProjectsPlaceholder/>}
-      <ProjectsGrid projects={filteredProjects.length > 0 ? filteredProjects : projects}/>
+      {tags.length > 0 && !isAnyTagSelected && <p className="text-center mt-3">Please select at least one category (technology)</p>}
+      {
+        isAnyTagSelected &&
+        <ProjectsGrid projects={filteredProjects.length > 0 ? filteredProjects : projects}/>
+      }
     </section>
   )
 }

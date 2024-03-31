@@ -4,8 +4,8 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 
 export const metadata: Metadata = {
-  title: 'KaszubDev',
-  description: 'Personal portfolio website',
+  title: 'KaszubDev - Personal portfolio website',
+  description: 'Next.js + TailwindCSS + TypeScript + Strapi CMS',
 }
 
 export default function RootLayout({

@@ -150,6 +150,8 @@ const Project = ({params}:{params: {slug: Text}}) => {
           <CarouselNext />
         </Carousel>
 
+        <div className="hidden sm:block mt-4 border-t border-t-gray-400"></div>
+
         <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5 2xl:gap-7 2xl:mt-7">
           {project.Gallery.data.map((item: Image, index) => (
             <button 
