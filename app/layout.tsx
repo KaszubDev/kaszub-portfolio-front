@@ -2,6 +2,7 @@ import '@styles/globals.css'
 import type { Metadata } from 'next'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: 'KaszubDev - Personal portfolio website',
@@ -22,6 +23,7 @@ export default function RootLayout({
         </main>
         <Footer/>
       </body>
+      <SpeedInsights/>
     </html>
   )
 }

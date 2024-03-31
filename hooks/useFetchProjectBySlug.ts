@@ -43,7 +43,7 @@ export const useFetchProjectBySlug = cache(async (slug: Text) => {
           `
       }),
       next: {
-        revalidate: 60
+        revalidate: 3600
       }
     }
   
