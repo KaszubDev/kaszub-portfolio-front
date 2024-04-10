@@ -1,18 +1,7 @@
 import { Button } from "@components/ui/button"
 import { useFetchProjectBySlug } from "@hooks/useFetchProjectBySlug"
 import { notFound } from "next/navigation"
-import Image from "next/image"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-
-import ProjectPagePlaceholder from "@components/ProjectPagePlaceholder"
 import GithubLogo from "@components/icons/GithubLogo"
-import { type CarouselApi } from "@/components/ui/carousel"
 import Link from "next/link"
 import ProjectGalleryCarousel from "@components/ProjectGalleryCarousel"
 
@@ -59,14 +48,6 @@ const Project = async ({params}:{params: {slug: Text}}) => {
     notFound()
   }
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="container mx-auto pt-2">
-  //       <ProjectPagePlaceholder/>
-  //     </div>
-  //   )
-  // }
-
   return (
     <div className="container mx-auto pt-2 mb-7">
       <div className="grid lg:grid-cols-2 lg:gap-x-20">
@@ -98,7 +79,6 @@ const Project = async ({params}:{params: {slug: Text}}) => {
         </div>
 
         {fetchedProject && fetchedProject.Gallery.data.length > 0 && 
-          
           <ProjectGalleryCarousel project={fetchedProject}/>
         }
       </div>
