@@ -7,7 +7,7 @@
  *   <p>This is a long text that may or may not overflow the container.</p>
  * </TextOverflowChecker>
  */
-
+'use client'
 import { useEffect, useRef, useState, ReactNode } from 'react'
 import {
     Tooltip,
