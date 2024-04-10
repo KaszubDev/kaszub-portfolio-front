@@ -9,7 +9,12 @@ interface IProjectCardProps {
   shortDescription: string,
   thumbnailUrl: string,
   thumbnailAltText: string,
-  tags?: { data: [] }
+  tags?: { data: [{
+    id: number,
+    attributes: {
+      name: string,
+    }
+  }] }
 }
 
 const ProjectCard = (props:IProjectCardProps) => {
