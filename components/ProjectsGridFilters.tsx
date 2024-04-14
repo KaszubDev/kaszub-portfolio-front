@@ -13,36 +13,42 @@ import {
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
+import { useRouter } from 'next/navigation'
 
 interface ProjectsGridFiltersProps {
-  applyFilters: (tags:Tag[]) => void,
-  changeTags: (arr: Tag[]) => void,
   tags: Tag[]
 }
 
-const ProjectsGridFilters = ({applyFilters, changeTags, tags}:ProjectsGridFiltersProps) => {
-
-  const [localTags, setLocalTags] = useState<Tag[]>([])
+const ProjectsGridFilters = ({tags}:ProjectsGridFiltersProps) => {
+  const router = useRouter()
+  const [localTags, setLocalTags] = useState<Tag[]>([...tags])
   
   const handleTagOnClick = (inputTag:Tag) => {
-    inputTag.checked = !inputTag.checked
-    let tempTags = [...tags]
-    // Find the index of the tag with the specified id, then update state
-    const index = tempTags.findIndex(tag => tag.id === inputTag.id)
-    tempTags[index] = inputTag
-    setLocalTags(tempTags)
+    const updatedTags = localTags.map(tag => tag.id === inputTag.id ? {...tag, checked: !inputTag.checked} : tag)
+    setLocalTags(updatedTags)
   }
 
   const handleAllOnClick = () => {
-    let tempTags = [...tags]
-    if (tags.every(tag => tag.checked)) {
-      tempTags.forEach(tag => tag.checked = false)
+    if (localTags.every(tag => tag.checked)) {
+      setLocalTags(localTags.map((tag) => ({
+        ...tag,
+        checked: false
+      })))
     } else {
-      tempTags.forEach(tag => tag.checked = true)
+      setLocalTags(localTags.map((tag) => ({
+        ...tag,
+        checked: true
+      })))
     }
-    setLocalTags(tempTags)
   }
 
+  const handleApplyOnClick = () => {
+    if (localTags.every(tag => tag.checked)) {
+      router.push('/projects')
+    } else {
+      router.push(`/projects?filters=${localTags.filter(tag => tag.checked).map(tag => tag.attributes.Name).join(',')}`)
+    }
+  }
 
   return (
     <>
@@ -70,11 +76,11 @@ const ProjectsGridFilters = ({applyFilters, changeTags, tags}:ProjectsGridFilter
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="flex items-center gap-1">
-              <Checkbox id="all" onCheckedChange={() => handleAllOnClick()} checked={tags.every(tag => tag.checked)} />
+              <Checkbox id="all" onCheckedChange={() => handleAllOnClick()} checked={localTags.every(tag => tag.checked)} />
               <Label htmlFor="all" className="text-right cursor-pointer">All</Label>
             </div>
 
-            {tags.map(tag => (
+            {localTags.map(tag => (
               <div key={tag.id} className="flex items-center gap-1">
                 <Checkbox id={tag.attributes.Name} onCheckedChange={() => handleTagOnClick(tag)} checked={tag.checked}/>
                 <Label htmlFor={tag.attributes.Name} className="text-right cursor-pointer">{tag.attributes.Name}</Label>
@@ -84,7 +90,12 @@ const ProjectsGridFilters = ({applyFilters, changeTags, tags}:ProjectsGridFilter
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button type="submit" onClick={() => applyFilters(localTags)}>Apply</Button>
+              <Button 
+                type="submit" 
+                onClick={handleApplyOnClick}
+                disabled={localTags.every(tag => !tag.checked)}>
+                  Apply
+              </Button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>

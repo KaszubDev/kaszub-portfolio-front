@@ -30,7 +30,7 @@ const Header = () => {
                   </Link>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
-                      <Link href="/" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/" ? "font-bold" : ""}`}>
+                      <Link href="/" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/projects" ? "font-bold" : ""}`}>
                         Projects
                       </Link>
                       <Link href="/about-me" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about-me" ? "font-bold" : ""}`}>
