@@ -1,14 +1,5 @@
-import ProjectsGrid from "@components/ProjectsGrid"
-import { useFetchProjects } from "@hooks/useFetchProjects"
+import { redirect } from 'next/navigation'
 
-const Projects = async () => {
-  const projects = await useFetchProjects()
-
-  return (
-    <section className="container mx-auto relative">
-      <ProjectsGrid projects={projects}/>
-    </section>
-  )
+export default async function Redirect() {
+  redirect('/projects')
 }
-
-export default Projects
