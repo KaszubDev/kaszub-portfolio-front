@@ -53,7 +53,7 @@ const ProjectsGridFilters = ({tags}:ProjectsGridFiltersProps) => {
   return (
     <>
       <Dialog>
-        <div className="text-right lg:mb-2">
+        <div className="text-right mb-2">
         <DialogTrigger asChild>
             <Button size="icon" variant="ghost" className=" hover:bg-transparent hover:fill-zinc-700">
               <svg className="w-6 h-auto" version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"

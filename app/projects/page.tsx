@@ -15,7 +15,7 @@ const Projects = async ({searchParams}:{searchParams: {filters: Text}}) => {
   })
 
   return (
-    <section className="container mx-auto relative">
+    <section className="container mx-auto relative sm:mb-5">
       <ProjectsGridFilters tags={tags}/>
       <ProjectsGrid projects={projects}/>
     </section>
