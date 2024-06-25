@@ -12,13 +12,13 @@ const Footer = async () => {
         <div className="border-t border-t-gray-400 flex justify-center py-3 lg:py-5">
             <div className="flex gap-x-6">
               {Github &&
-              <Link href={Github} className="md:hover:fill-zinc-700" title="KaszubDev GitHub profile">
-                <GithubLogo classes="h-5 w-5 md:h-6 md:w-6"/>
+              <Link href={Github} className="sm:hover:fill-zinc-700" title="KaszubDev GitHub profile">
+                <GithubLogo classes="h-5 w-5 lg:h-6 lg:w-6"/>
               </Link>
               }
               {Linkedin &&
-              <Link href={Linkedin} className="md:hover:fill-zinc-700" title="My LinkedIn profile">
-                <LinkedinLogo classes="h-5 w-5 md:h-6 md:w-6"/>
+              <Link href={Linkedin} className="sm:hover:fill-zinc-700" title="My LinkedIn profile">
+                <LinkedinLogo classes="h-5 w-5 lg:h-6 lg:w-6"/>
               </Link>
               }
             </div>
