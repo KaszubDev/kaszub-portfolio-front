@@ -15,6 +15,7 @@ const Header = () => {
               <>
                 <div className="relative flex items-center justify-between">
                   <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                    <ThemeToggler classes='mr-3'/>
                     {/* Mobile menu button*/}
                     <Disclosure.Button className="relative w-6 h-6">
                       <span className="sr-only">Open main menu</span>
