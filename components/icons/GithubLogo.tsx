@@ -1,3 +1,11 @@
+/**
+ * Represents the GitHub logo SVG component.
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} [props.classes] - Additional CSS classes for the SVG element.
+ * @returns {JSX.Element} The rendered GitHub logo SVG component.
+ */
+
 type GithubLogoProps = {
     classes?: string
 }

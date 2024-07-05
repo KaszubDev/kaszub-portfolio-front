@@ -22,7 +22,7 @@ const ProjectCard = (props:IProjectCardProps) => {
 
   return (
     <Link href={`/projects/${slug}`}>
-      <div className="relative h-full overflow-hidden flex flex-col bg-white rounded-lg ring-1 ring-slate-900/5 shadow-xl transition-shadow hover:ring-slate-900/20">
+      <div className="relative h-full overflow-hidden flex flex-col rounded-lg ring-1 ring-slate-900/5 shadow-xl transition-shadow hover:ring-slate-900/20 dark:border dark:border-foreground/30 dark:hover:border-foreground/40">
         <Image src={thumbnailUrl} width={400} height={300} alt={thumbnailAltText || `${name} project thumbnail`} />
         <div className="py-6 px-4 relative flex flex-col h-full">
           <span className="block text-xl mb-1 lg:text-2xl lg:mb-2 font-bold">{name}</span>

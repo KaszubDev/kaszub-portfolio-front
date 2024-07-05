@@ -9,23 +9,10 @@ import {
   } from "@/components/ui/carousel"
 import { type CarouselApi } from "@/components/ui/carousel"
 import { useEffect, useState } from "react"
-import { useFetchProjectBySlug } from "@hooks/useFetchProjectBySlug"
 
 const ProjectGalleryCarousel = (props: {project:IProjectDetails}) => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
   const [selectedImage, setSelectedImage] = useState<Number>(0)
-  // const [project, setProject] = useState<IProjectDetails>()
-
-  
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const fetchedProject:IProjectDetails = await useFetchProjectBySlug(props.slug)
-  //     setProject(fetchedProject)
-  //   })().then(() => {
-      
-  //   })
-  // }, [])
 
   useEffect(() => {
     if(!carouselApi) return

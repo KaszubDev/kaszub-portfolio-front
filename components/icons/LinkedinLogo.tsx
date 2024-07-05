@@ -1,3 +1,11 @@
+/**
+ * Represents the LinkedIn logo component.
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} [props.classes] - Additional CSS classes for the component.
+ * @returns {JSX.Element} - The rendered LinkedIn logo.
+ */
+
 type LinkedinLogoProps = {
     classes?: string
 }

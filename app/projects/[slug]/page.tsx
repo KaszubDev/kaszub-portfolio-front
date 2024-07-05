@@ -69,7 +69,7 @@ const Project = async ({params}:{params: {slug: Text}}) => {
             {fetchedProject?.Github_url &&
             <Link href={fetchedProject.Github_url}>
               <Button variant="outline">
-                <GithubLogo classes="h-5 w-5 mr-2"/>
+                <GithubLogo classes="h-5 w-5 mr-2 dark:fill-foreground"/>
                 View source
               </Button>
             </Link>

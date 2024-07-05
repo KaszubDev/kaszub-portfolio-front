@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: "class",
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,7 +17,8 @@ const config: Config = {
         mono: ['SF Mono Regular', 'sans-serif']
       },
       screens: {
-        'xs': '420px'
+        'xs': '420px',
+        '2xl': '1536px'
       },
       height: {
         '0.7': '0.175rem',

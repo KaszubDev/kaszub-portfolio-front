@@ -55,8 +55,8 @@ const ProjectsGridFilters = ({tags}:ProjectsGridFiltersProps) => {
       <Dialog>
         <div className="text-right mb-2">
         <DialogTrigger asChild>
-            <Button size="icon" variant="ghost" className=" hover:bg-transparent hover:fill-zinc-700">
-              <svg className="w-6 h-auto" version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            <Button size="icon" variant="ghost" className="">
+              <svg className="w-6 h-auto dark:fill-foreground" version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 viewBox="0 0 666.7 566.6">
                 <path d="M433.3,233.3c51.6,0,97.1-33.9,111.8-83.3h88.2c18.4,0,33.3-14.9,33.3-33.3s-14.9-33.3-33.3-33.3h-88.2
                   c-18.5-61.8-83.5-96.9-145.3-78.4c-37.6,11.3-67.1,40.7-78.4,78.4H33.3C14.9,83.3,0,98.2,0,116.6S14.9,150,33.3,150h288.2

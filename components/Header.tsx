@@ -3,13 +3,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Disclosure, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import ThemeToggler from './ThemeToggler'
 
 const Header = () => {
     const pathname = usePathname()
 
     return (
         <header className='container mx-auto mb-3 md:mb-5 lg:mb-8'>
-          <Disclosure as="nav" className="p-0 py-4 lg:py-7 border-b border-b-gray-400 sm:px-0">
+          <Disclosure as="nav" className="p-0 py-4 2xl:py-7 border-b border-b-gray-400 sm:px-0">
             {({ open }) => (
               <>
                 <div className="relative flex items-center justify-between">
@@ -29,13 +30,14 @@ const Header = () => {
                     <span className='font-bold text-xl lg:text-3xl'>KaszubDev</span>
                   </Link>
                   <div className="hidden sm:ml-6 sm:block">
-                    <div className="flex space-x-4">
-                      <Link href="/" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/projects" ? "font-bold" : ""}`}>
+                    <div className="flex items-center space-x-4">
+                      <Link href="/" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/projects" ? "font-bold" : ""}`}>
                         Projects
                       </Link>
-                      <Link href="/about-me" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about-me" ? "font-bold" : ""}`}>
+                      <Link href="/about-me" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/about-me" ? "font-bold" : ""}`}>
                         About me
                       </Link>
+                      <ThemeToggler/>
                     </div>
                   </div>
                 </div>
@@ -51,10 +53,10 @@ const Header = () => {
                 >
                   <Disclosure.Panel className="sm:hidden">
                     <div className="flex flex-col gap-y-3 mt-4">
-                      <Link href="/" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/projects" ? "font-bold" : ""}`}>
+                      <Link href="/" className={`text-base text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/projects" ? "font-bold" : ""}`}>
                         Projects
                       </Link>
-                      <Link href="/about-me" className={`text-base text-black text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about-me" ? "font-bold" : ""}`}>
+                      <Link href="/about-me" className={`text-base text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about-me" ? "font-bold" : ""}`}>
                         About me
                       </Link>
                     </div>
