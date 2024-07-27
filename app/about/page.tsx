@@ -31,19 +31,20 @@ const AboutPage = async () => {
         <div className="bg-[#5A5D7A]">
           <div className="p-5 lg:p-9">
             {extractedData.map(item => (
-              <AboutDataBlock title={item.title} content={item.content} classes="mb-6"/>
+              <AboutDataBlock title={item.title} content={item.content} classes="mb-6" key={item.title}/>
             ))}
             <div className="mb-6">
                 <span className="block">&gt; KaszubDev.ContactInfo</span>
                 <span className="text-[#E7D184]">[
                   {extractedDataCommon.map((item, index) => (
-                    <>"
-                    <span className="text-[#35FEFF]">
-                    <Link href={item.url} className="transition-opacity hover:opacity-80">
-                      {item.title}
-                    </Link>
+                    <span key={item.title}>"
+                      <span className="text-[#35FEFF]">
+                      <Link href={item.url} className="transition-opacity hover:opacity-80">
+                        {item.title}
+                      </Link>
+                      </span>
+                      {index+1 === extractedDataCommon.length ? '"' : '", '}
                     </span>
-                    {index+1 === extractedDataCommon.length ? '"' : '", '}</>
                   ))}
                 ]</span>
             </div>

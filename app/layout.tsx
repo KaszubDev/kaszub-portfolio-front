@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from '@components/ThemeProvider'
 
 export const metadata: Metadata = {
-  title: 'KaszubDev - Personal portfolio website',
+  title: "KaszubDev - Krzysztof Kaszubowski's personal portfolio website",
   description: 'Next.js + TailwindCSS + TypeScript + Strapi CMS',
 }
 

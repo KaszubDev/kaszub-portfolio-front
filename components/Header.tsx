@@ -35,8 +35,11 @@ const Header = () => {
                       <Link href="/" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/projects" ? "font-bold" : ""}`}>
                         Projects
                       </Link>
-                      <Link href="/about-me" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/about-me" ? "font-bold" : ""}`}>
+                      <Link href="/about" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/about" ? "font-bold" : ""}`}>
                         About me
+                      </Link>
+                      <Link href="/articles" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/articles" ? "font-bold" : ""}`}>
+                        Articles
                       </Link>
                       <ThemeToggler/>
                     </div>
@@ -57,8 +60,11 @@ const Header = () => {
                       <Link href="/" className={`text-base text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/projects" ? "font-bold" : ""}`}>
                         Projects
                       </Link>
-                      <Link href="/about-me" className={`text-base text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about-me" ? "font-bold" : ""}`}>
+                      <Link href="/about" className={`text-base text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about" ? "font-bold" : ""}`}>
                         About me
+                      </Link>
+                      <Link href="/articles" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/articles" ? "font-bold" : ""}`}>
+                        Articles
                       </Link>
                     </div>
                   </Disclosure.Panel>
