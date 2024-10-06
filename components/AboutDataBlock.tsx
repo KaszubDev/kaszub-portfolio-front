@@ -4,7 +4,7 @@ interface AboutDataBlockProps {
     classes?: string
 }
 
-const AboutDataBlock = ({title, content, classes}:AboutDataBlockProps) => {
+const AboutDataBlock = ({title, content, classes}: AboutDataBlockProps) => {
   
   return (
     <div className={classes}>

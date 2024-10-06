@@ -19,7 +19,7 @@ interface ProjectsGridFiltersProps {
   tags: Tag[]
 }
 
-const ProjectsGridFilters = ({tags}:ProjectsGridFiltersProps) => {
+const ProjectsGridFilters = ({tags}: ProjectsGridFiltersProps) => {
   const router = useRouter()
   const [localTags, setLocalTags] = useState<Tag[]>([...tags])
   

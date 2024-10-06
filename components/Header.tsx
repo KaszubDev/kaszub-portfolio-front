@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { Disclosure, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import ThemeToggler from './ThemeToggler'
+import NavLinks from './NavLinks'
 
 const Header = () => {
     const pathname = usePathname()
@@ -32,15 +33,7 @@ const Header = () => {
                   </Link>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex items-center space-x-4">
-                      <Link href="/" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/projects" ? "font-bold" : ""}`}>
-                        Projects
-                      </Link>
-                      <Link href="/about" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/about" ? "font-bold" : ""}`}>
-                        About me
-                      </Link>
-                      <Link href="/articles" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/articles" ? "font-bold" : ""}`}>
-                        Articles
-                      </Link>
+                      <NavLinks/>
                       <ThemeToggler/>
                     </div>
                   </div>
@@ -57,15 +50,7 @@ const Header = () => {
                 >
                   <Disclosure.Panel className="sm:hidden">
                     <div className="flex flex-col gap-y-3 mt-4">
-                      <Link href="/" className={`text-base text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/projects" ? "font-bold" : ""}`}>
-                        Projects
-                      </Link>
-                      <Link href="/about" className={`text-base text-right border-none pr-2 md:hover:text-zinc-700 ${pathname == "/about" ? "font-bold" : ""}`}>
-                        About me
-                      </Link>
-                      <Link href="/articles" className={`text-base text-right border-none pr-2 md:hover:text-foreground/80 ${pathname == "/articles" ? "font-bold" : ""}`}>
-                        Articles
-                      </Link>
+                      <NavLinks/>
                     </div>
                   </Disclosure.Panel>
                 </Transition>

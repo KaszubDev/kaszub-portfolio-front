@@ -17,9 +17,7 @@ interface IProjectCardProps {
   }] }
 }
 
-const ProjectCard = (props:IProjectCardProps) => {
-  const {name, slug, shortDescription, thumbnailUrl, thumbnailAltText, tags } = props
-
+const ProjectCard = ({name, slug, shortDescription, thumbnailUrl, thumbnailAltText, tags }: IProjectCardProps) => {
   return (
     <Link href={`/projects/${slug}`}>
       <div className="relative h-full overflow-hidden flex flex-col rounded-lg ring-1 ring-slate-900/5 shadow-xl transition-shadow hover:ring-slate-900/20 dark:border dark:border-foreground/30 dark:hover:border-foreground/50">

@@ -4,10 +4,10 @@ interface IProjectsGridProps {
   projects: IProjectsGrid[]
 }
 
-const ProjectsGrid = (projects:IProjectsGridProps) => {
+const ProjectsGrid = ({projects}: IProjectsGridProps) => {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-      {projects.projects.map((project) => {
+      {projects.map((project) => {
           const {Name, Slug, Short_description, Thumbnail, Tags} = project.attributes
           const id = project.id
           return (
