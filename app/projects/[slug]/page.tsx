@@ -47,23 +47,23 @@ const Project = async ({params}:{params: {slug: Text}}) => {
     <section className="container mx-auto pt-2 mb-7">
       <div className="grid lg:grid-cols-2 lg:gap-x-20">
         <div className="lg:order-2">
-          <h1 className="text-2xl font-bold lg:text-4xl">{fetchedProject?.name}</h1>
+          <h1 className="text-2xl font-bold lg:text-4xl">{fetchedProject?.Name}</h1>
           <div className="flex flex-wrap gap-x-2 mt-2">
-            {fetchedProject?.tags?.map((tag:Tag) => (
-              <span className="text-xs" key={tag.id}>#{tag.name}</span>
+            {fetchedProject?.Tags?.map((tag:Tag) => (
+              <span className="text-xs" key={tag.documentId}>#{tag.Name}</span>
             ))}
           </div>
 
-          <p className="mt-5">{fetchedProject?.description}</p>
+          <p className="mt-5">{fetchedProject?.Description}</p>
 
           <div className="flex gap-x-5 mt-6">
-            {fetchedProject?.demoUrl && 
-            <Link href={fetchedProject.demoUrl}>
+            {fetchedProject?.Demo_url && 
+            <Link href={fetchedProject.Demo_url}>
               <Button>Live Demo</Button>
             </Link>
             }
-            {fetchedProject?.githubUrl &&
-            <Link href={fetchedProject.githubUrl}>
+            {fetchedProject?.Github_url &&
+            <Link href={fetchedProject.Github_url}>
               <Button variant="outline">
                 <GithubLogo classes="h-5 w-5 mr-2 dark:fill-foreground"/>
                 View source
@@ -73,7 +73,7 @@ const Project = async ({params}:{params: {slug: Text}}) => {
           </div>
         </div>
 
-        {fetchedProject && fetchedProject.gallery.length > 0 && 
+        {fetchedProject && fetchedProject.Gallery.length > 0 && 
           <ProjectGalleryCarousel project={fetchedProject}/>
         }
       </div>

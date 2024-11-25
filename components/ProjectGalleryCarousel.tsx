@@ -40,11 +40,11 @@ const ProjectGalleryCarousel = ({project}:ProjectGalleryCarouselProps) => {
           setApi={setCarouselApi}
           >
           <CarouselContent>
-            {project.gallery.map((item: Image) => (
-              <CarouselItem key={item.id}>
+            {project.Gallery.map((item: Image) => (
+              <CarouselItem key={item.documentId}>
                 <Image 
                   src={item.url}
-                  alt={item.alternativeText || `screenshot from ${project.name} project`}
+                  alt={item.alternativeText || `screenshot from ${project.Name} project`}
                   width={750}
                   height={365}
                   placeholder="blur"
@@ -61,15 +61,15 @@ const ProjectGalleryCarousel = ({project}:ProjectGalleryCarouselProps) => {
         <div className="hidden sm:block mt-4 border-t border-t-gray-400"></div>
 
         <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5 2xl:gap-7 2xl:mt-7">
-          {project.gallery.map((item: Image, index) => (
+          {project.Gallery.map((item: Image, index) => (
             <button 
               onClick={() => changeSlide(index)}
               className={`transition-opacity ${index === selectedImage ? 'opacity-100' : 'opacity-40'}`}
-              key={item.id}
+              key={item.documentId}
               >
               <Image 
                 src={item.url}
-                alt={item.alternativeText || `screenshot from ${project.name} project`}
+                alt={item.alternativeText || `screenshot from ${project.Name} project`}
                 placeholder="blur"
                 blurDataURL={item.url}
                 width={220}
