@@ -12,12 +12,8 @@ export const useFetchTags = cache(async () => {
             query: `
             {
                 tags {
-                    data {
-                        id
-                        attributes {
-                            Name
-                        }
-                    }
+                    documentId
+                    Name
                 }
             }
             `
@@ -27,5 +23,5 @@ export const useFetchTags = cache(async () => {
     const res = await fetch(`${URL}/graphql`, { ...fetchParams, next: {revalidate: 3600} })
     const tags = await res.json()
     
-    return tags.data.tags.data
+    return tags.data.tags
 })

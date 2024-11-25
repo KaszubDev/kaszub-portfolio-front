@@ -16,29 +16,17 @@ export const useFetchProjects = cache(async (tags: String[]) => {
             query: `
             {
             projects${tags.length > 0 ? `(filters: { Tags: { Name: { in: [${tags.map(tag => `"${tag}"`)}] } } })` : ``} {
-                    data {
-                        id
-                        attributes {
-                            Name
-                            Slug
-                            Short_description
-                            Thumbnail {
-                                data {
-                                    attributes {
-                                        url
-                                        alternativeText
-                                    }
-                                }
-                            }
-                            Tags {
-                                data {
-                                    id
-                                    attributes {
-                                        Name
-                                    }
-                                }
-                            }
-                        }
+                    documentId
+                    Name
+                    Slug
+                    Short_description
+                    Thumbnail {
+                        url
+                        alternativeText
+                    }
+                    Tags {
+                        documentId
+                        Name
                     }
                 }
             }
@@ -49,5 +37,5 @@ export const useFetchProjects = cache(async (tags: String[]) => {
     const res = await fetch(`${URL}/graphql`, { ...fetchParams, next: {revalidate: 3600} })
     const projects = await res.json()
     
-    return projects.data.projects.data
+    return projects.data.projects
 })

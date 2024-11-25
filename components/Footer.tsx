@@ -5,7 +5,7 @@ import LinkedinLogo from "./icons/LinkedinLogo"
 
 const Footer = async () => {
   const common = await useFetchCommon()
-  const {Linkedin, Github} = common.attributes
+  const {Linkedin, Github} = common
 
   return (
     <footer className="container mx-auto absolute bottom-0 left-0 right-0">

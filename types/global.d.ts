@@ -5,30 +5,24 @@ declare global {
     
     // Interfaces
     interface Tag {
-        id: number,
-        attributes: {
-          Name: string
-        },
+        documentId: number,
+        Name: string,
         checked?: boolean
     }
 
     interface Image {
-        id: number,
-        attributes: {
-            url: string,
-            alternativeText: string
-        }
+        documentId: number,
+        url: string,
+        alternativeText: string
     }
 
     interface IProjectsGrid {
-        id: number,
-        attributes: {
-            Name: string,
-            Slug: string,
-            Short_description: string,
-            Thumbnail: { data: Image },
-            Tags: { data: Array }
-        }
+        documentId: number,
+        Name: string,
+        Slug: string,
+        Short_description: string,
+        Thumbnail: Image,
+        Tags: Tag[]
     }
 
     interface ITagsProps {
@@ -40,9 +34,9 @@ declare global {
         Description: string,
         Slug: string,
         Short_description: string,
-        Tags: { data: Array },
+        Tags: Array<Tag>,
         Demo_url: string,
         Github_url: string,
-        Gallery: { data: Image[] }
+        Gallery: Image[]
     }
 }

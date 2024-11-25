@@ -12,12 +12,8 @@ export const useFetchCommon = cache(async () => {
             query: `
             {
                 common {
-                    data {
-                        attributes {
-                            Linkedin
-                            Github
-                        }
-                    }
+                    Github
+                    Linkedin
                 }
             }
             `
@@ -27,5 +23,5 @@ export const useFetchCommon = cache(async () => {
     const res = await fetch(`${URL}/graphql`, { ...fetchParams, next: {revalidate: 3600} })
     const common = await res.json()
     
-    return common.data.common.data
+    return common.data.common
 })

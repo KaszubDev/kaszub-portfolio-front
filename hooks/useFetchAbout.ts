@@ -12,15 +12,11 @@ export const useFetchAbout = cache(async () => {
             query: `
             {
                 about {
-                    data {
-                      attributes {
-                        FullName
-                        CurrentLocation
-                        Interests
-                        Skills
-                        Education
-                      }
-                    }
+                    FullName
+                    CurrentLocation
+                    Interests
+                    Skills
+                    Education
                 }
             }
             `
@@ -30,5 +26,5 @@ export const useFetchAbout = cache(async () => {
     const res = await fetch(`${URL}/graphql`, { ...fetchParams, next: {revalidate: 3600} })
     const about = await res.json()
     
-    return about.data.about.data
+    return about.data.about
 })

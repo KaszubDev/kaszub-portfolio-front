@@ -8,12 +8,12 @@ const AboutPage = async () => {
   const common = await useFetchCommon()
 
   // Extract data and create a new array
-  const extractedData = Object.entries(aboutData.attributes).map(([title, content]) => ({
+  const extractedData = Object.entries(aboutData).map(([title, content]) => ({
     title: `KaszubDev.${title}`,
     content: Array.isArray(content) ? `["${(content as string[]).join('", "')}"]` : `"${content}"` as string
   }))
 
-  const extractedDataCommon = Object.entries(common.attributes).map(([title, url]) => ({
+  const extractedDataCommon = Object.entries(common).map(([title, url]) => ({
     title,
     url: url as string
   }))

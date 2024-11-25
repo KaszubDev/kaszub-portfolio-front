@@ -9,7 +9,7 @@ const Projects = async ({searchParams}:{searchParams: {filters: Text}}) => {
   const tags = await useFetchTags()
 
   tags.forEach((tag:Tag) => {
-    if (filterTags.includes(tag.attributes.Name) || filterTags.length === 0) {
+    if (filterTags.includes(tag.name) || filterTags.length === 0) {
       tag.checked = true
     }
   })

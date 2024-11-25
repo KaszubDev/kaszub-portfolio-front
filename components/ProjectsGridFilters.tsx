@@ -24,7 +24,7 @@ const ProjectsGridFilters = ({tags}: ProjectsGridFiltersProps) => {
   const [localTags, setLocalTags] = useState<Tag[]>([...tags])
   
   const handleTagOnClick = (inputTag:Tag) => {
-    const updatedTags = localTags.map(tag => tag.id === inputTag.id ? {...tag, checked: !inputTag.checked} : tag)
+    const updatedTags = localTags.map(tag => tag.documentId === inputTag.documentId ? {...tag, checked: !inputTag.checked} : tag)
     setLocalTags(updatedTags)
   }
 
@@ -46,7 +46,7 @@ const ProjectsGridFilters = ({tags}: ProjectsGridFiltersProps) => {
     if (localTags.every(tag => tag.checked)) {
       router.push('/projects')
     } else {
-      router.push(`/projects?filters=${localTags.filter(tag => tag.checked).map(tag => tag.attributes.Name).join(',')}`)
+      router.push(`/projects?filters=${localTags.filter(tag => tag.checked).map(tag => tag.Name).join(',')}`)
     }
   }
 
@@ -81,9 +81,9 @@ const ProjectsGridFilters = ({tags}: ProjectsGridFiltersProps) => {
             </div>
 
             {localTags.map(tag => (
-              <div key={tag.id} className="flex items-center gap-1">
-                <Checkbox id={tag.attributes.Name} onCheckedChange={() => handleTagOnClick(tag)} checked={tag.checked}/>
-                <Label htmlFor={tag.attributes.Name} className="text-right cursor-pointer">{tag.attributes.Name}</Label>
+              <div key={tag.documentId} className="flex items-center gap-1">
+                <Checkbox id={tag.Name} onCheckedChange={() => handleTagOnClick(tag)} checked={tag.checked}/>
+                <Label htmlFor={tag.Name} className="text-right cursor-pointer">{tag.Name}</Label>
               </div>
             ))}
             

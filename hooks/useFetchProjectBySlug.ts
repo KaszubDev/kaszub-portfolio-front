@@ -11,32 +11,20 @@ export const useFetchProjectBySlug = cache(async (slug: Text) => {
       body: JSON.stringify({
           query: `
           {
-            projects(filters: {Slug:{eq:"${slug}"}}) {
-              data {
-                  attributes {
-                    Name
-                    Slug
-                    Description
-                    Tags {
-                      data {
-                        id
-                        attributes {
-                          Name
-                        }
-                      }
-                    }
-                    Demo_url
-                    Github_url
-                    Gallery {
-                      data {
-                        id
-                        attributes {
-                          url
-                          alternativeText
-                        }
-                      }
-                    }
-                  }
+            projects(filters: {Slug:{eq:"${slug}"}}){
+              Name
+              Slug
+              Description
+              Tags {
+                documentId
+                Name
+              }
+              Demo_url
+              Github_url
+              Gallery {
+                documentId
+                  url
+                  alternativeText
               }
             }
           }
@@ -50,5 +38,6 @@ export const useFetchProjectBySlug = cache(async (slug: Text) => {
     const res = await fetch(`${URL}/graphql`, fetchParams)
     if (!res.ok) return undefined
     const project = await res.json()
-    return project.data.projects.data[0]?.attributes
+    
+    return project.data.projects[0]
   })

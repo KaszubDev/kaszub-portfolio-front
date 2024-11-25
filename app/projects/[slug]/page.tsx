@@ -19,13 +19,9 @@ export const generateStaticParams = async () => {
     body: JSON.stringify({
         query: `
         {
-            projects {
-                data {
-                    attributes {
-                        Slug
-                    }
-                }
-            }
+          projects {
+            Slug
+          }
         }
         `
     })
@@ -33,8 +29,8 @@ export const generateStaticParams = async () => {
 
   const res = await fetch(`${URL}/graphql`, fetchParams)
   const projects = await res.json()
-  const params = projects.data.projects.data.map((project: { attributes: { Slug: Text } }) => {
-    return { slug: project.attributes.Slug }
+  const params = projects.data.projects.map((project: { Slug: Text }) => {
+    return { slug: project.Slug }
   })
 
   return params
@@ -51,23 +47,23 @@ const Project = async ({params}:{params: {slug: Text}}) => {
     <section className="container mx-auto pt-2 mb-7">
       <div className="grid lg:grid-cols-2 lg:gap-x-20">
         <div className="lg:order-2">
-          <h1 className="text-2xl font-bold lg:text-4xl">{fetchedProject?.Name}</h1>
+          <h1 className="text-2xl font-bold lg:text-4xl">{fetchedProject?.name}</h1>
           <div className="flex flex-wrap gap-x-2 mt-2">
-            {fetchedProject?.Tags?.data.map((tag:Tag) => (
-              <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
+            {fetchedProject?.tags?.map((tag:Tag) => (
+              <span className="text-xs" key={tag.id}>#{tag.name}</span>
             ))}
           </div>
 
-          <p className="mt-5">{fetchedProject?.Description}</p>
+          <p className="mt-5">{fetchedProject?.description}</p>
 
           <div className="flex gap-x-5 mt-6">
-            {fetchedProject?.Demo_url && 
-            <Link href={fetchedProject.Demo_url}>
+            {fetchedProject?.demoUrl && 
+            <Link href={fetchedProject.demoUrl}>
               <Button>Live Demo</Button>
             </Link>
             }
-            {fetchedProject?.Github_url &&
-            <Link href={fetchedProject.Github_url}>
+            {fetchedProject?.githubUrl &&
+            <Link href={fetchedProject.githubUrl}>
               <Button variant="outline">
                 <GithubLogo classes="h-5 w-5 mr-2 dark:fill-foreground"/>
                 View source
@@ -77,7 +73,7 @@ const Project = async ({params}:{params: {slug: Text}}) => {
           </div>
         </div>
 
-        {fetchedProject && fetchedProject.Gallery.data.length > 0 && 
+        {fetchedProject && fetchedProject.gallery.length > 0 && 
           <ProjectGalleryCarousel project={fetchedProject}/>
         }
       </div>

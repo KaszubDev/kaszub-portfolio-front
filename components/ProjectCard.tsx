@@ -9,12 +9,10 @@ interface IProjectCardProps {
   shortDescription: string,
   thumbnailUrl: string,
   thumbnailAltText: string,
-  tags?: { data: [{
-    id: number,
-    attributes: {
-      name: string,
-    }
-  }] }
+  tags?: {
+    documentId: number,
+    Name: string,
+  }[]
 }
 
 const ProjectCard = ({name, slug, shortDescription, thumbnailUrl, thumbnailAltText, tags }: IProjectCardProps) => {
@@ -28,8 +26,8 @@ const ProjectCard = ({name, slug, shortDescription, thumbnailUrl, thumbnailAltTe
             {shortDescription}
           </TextOverflowChecker>
           <div className="flex flex-wrap gap-x-2 mt-auto">
-              {tags?.data.map((tag:any) => (
-                <span className="text-xs" key={tag.id}>#{tag.attributes.Name}</span>
+              {tags?.map((tag:Tag) => (
+                <span className="text-xs" key={tag.documentId}>#{tag.Name}</span>
               ))}
           </div>
         </div>
