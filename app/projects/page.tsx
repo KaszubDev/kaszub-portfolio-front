@@ -3,7 +3,8 @@ import { useFetchProjects } from "@hooks/useFetchProjects"
 import ProjectsGridFilters from "@components/ProjectsGridFilters"
 import { useFetchTags } from "@hooks/useFetchTags"
 
-const Projects = async ({searchParams}:{searchParams: {filters: Text}}) => {
+const Projects = async (props:{searchParams: Promise<{filters: Text}>}) => {
+  const searchParams = await props.searchParams;
   const filterTags:String[] = searchParams.filters ? searchParams.filters.toString().split(',') : []
   const projects = await useFetchProjects(filterTags)
   const tags = await useFetchTags()

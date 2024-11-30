@@ -36,7 +36,8 @@ export const generateStaticParams = async () => {
   return params
 }
 
-const Project = async ({params}:{params: {slug: Text}}) => {
+const Project = async (props:{params: Promise<{slug: Text}>}) => {
+  const params = await props.params;
   const fetchedProject:IProjectDetails = await useFetchProjectBySlug(params.slug)
 
   if (!fetchedProject) {
