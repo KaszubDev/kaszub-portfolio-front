@@ -26,7 +26,7 @@ const ProjectGalleryCarousel = ({project}:ProjectGalleryCarouselProps) => {
   }, [carouselApi])
 
   const changeSlide = (slideNumber: number) => {
-    carouselApi.scrollTo(slideNumber)
+    carouselApi?.scrollTo(slideNumber)
   }
 
   return (
